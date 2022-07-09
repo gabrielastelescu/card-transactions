@@ -4,7 +4,10 @@
       v-for="item in cards"
       v-bind="item"
       :key="item.id"
-      @click="setSelectedCardId(item.id)"
+      @click="
+        setSelectedCardId(item.id);
+        setTransactionColor(item.color);
+      "
     />
   </div>
 </template>
@@ -24,11 +27,15 @@ export default {
       getTransactions(payload);
       methods.setSelectedCard(payload);
     };
+    const setTransactionColor = (payload: string) => {
+      methods.setBackgroundColor(payload);
+    };
     onMounted(() => {
       getCards();
     });
     return {
       setSelectedCardId,
+      setTransactionColor,
       cards,
       store,
     };
@@ -42,7 +49,18 @@ export default {
 </script>
 <style>
 .cards {
-  display: flex;
+  display: grid;
+  gap: 100px;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  width: 100%;
+  margin: 0 -5px;
+  justify-content: space-between;
+}
+
+.cards :second-child {
+  justify-self: end;
+  grid-area: b;
   width: 100%;
   margin: 0 -5px;
   justify-content: space-between;
@@ -57,7 +75,6 @@ export default {
 @media screen and (max-width: 760px) {
   .cards {
     width: 100%;
-    flex-direction: column;
     display: block;
     margin-bottom: 20px;
   }

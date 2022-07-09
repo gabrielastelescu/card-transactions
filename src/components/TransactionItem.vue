@@ -7,10 +7,21 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { computed } from "vue";
+import store from "../store/index";
 export default defineComponent({
   props: {
     description: { type: String, required: true },
     amount: { type: Number, required: true },
+    color: { type: String, required: true },
+  },
+  setup() {
+    const bgColor = computed(() => store.state.bgColor);
+
+    return {
+      bgColor,
+      store,
+    };
   },
 });
 </script>
@@ -18,7 +29,7 @@ export default defineComponent({
 .transaction {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 15px;
-  background-color: #ebebeb;
+  background-color: v-bind(bgColor);
   margin: 15px 0;
   padding: 30px;
 }

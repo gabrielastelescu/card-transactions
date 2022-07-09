@@ -14,6 +14,7 @@ export default defineComponent({
   props: {
     id: { type: String, required: true },
     description: { type: String, required: true },
+    color: { type: String, required: true },
   },
   setup() {
     const getters = store.getters;
@@ -27,27 +28,32 @@ export default defineComponent({
 </script>
 <style>
 .column {
-  width: 45%;
+  height: 100%;
+  width: 100%;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .column {
+    height: 100%;
     width: 100%;
     display: block;
-    margin-bottom: 20px;
+    margin: 20px 0;
+  }
+  .card {
+    font-size: 18px;
   }
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   height: 150%;
   padding: 16px;
   text-align: left;
-  background-color: #ebebeb;
+  background-color: v-bind(color);
   border-radius: 15px;
+  font-size: 24px;
 }
 
 .selected {
-  background-color: #cdeafd;
+  border: 3px solid black;
 }
 </style>

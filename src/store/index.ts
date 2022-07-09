@@ -4,12 +4,16 @@ import { Transaction } from "../models/transaction.model";
 
 const state = reactive({
   selectedCard: "",
+  bgColor: "",
   search: null,
   cards: [] as Card[],
   transactions: [] as Transaction[],
 });
 
 const mutations = {
+  setBackgroundColor(payload: string) {
+    state.bgColor = payload;
+  },
   setSelectedCard(payload: string) {
     state.selectedCard = payload;
   },
