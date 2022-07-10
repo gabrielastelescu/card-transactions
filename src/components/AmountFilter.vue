@@ -24,7 +24,7 @@ export default {
 .searchGroup {
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 70px;
   width: 100%;
 }
 

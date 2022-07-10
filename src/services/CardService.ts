@@ -7,12 +7,14 @@ const data = [
 ];
 
 const getCards = async (): Promise<Card[]> => {
-  return await new Promise<Card[]>((resolve) => resolve(data)).then(
-    (response) => {
+  return await new Promise<Card[]>((resolve) => resolve(data))
+    .then((response) => {
       store.mutations.setCards(response);
       return response as Card[];
-    }
-  );
+    })
+    .catch((error) => {
+      throw new Error(`Error while fetching cards: ${error}`);
+    });
 };
 
 export default getCards;

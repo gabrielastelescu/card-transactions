@@ -18,8 +18,8 @@ export default {
   setup() {
     const transactions = computed(() =>
       store.state.search
-        ? store.state.transactions.filter((t) =>
-            t.amount.toString().startsWith(store.state.search!)
+        ? store.state.transactions.filter(
+            (t) => t.amount >= store.state.search!
           )
         : store.state.transactions
     );

@@ -21,6 +21,11 @@ const getTransactions = async (cardId: string): Promise<Transaction[]> => {
     .then((data) => {
       store.mutations.setTransactions(data);
       return data as Transaction[];
+    })
+    .catch((error) => {
+      throw new Error(
+        `Error while fetching transactions for card id: ${cardId}: ${error}`
+      );
     });
 };
 
