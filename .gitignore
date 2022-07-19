@@ -1,2 +1,7 @@
 node_modules/
-.firebase
+firebase
+build
+dist
+build/404.html
+.firebase/hosting.YnVpbGQ.cache
+.firebase/hosting.ZGlzdA.cache
